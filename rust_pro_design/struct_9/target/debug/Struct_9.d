@@ -1,0 +1,1 @@
+/Users/aarontian/MyWorkSpace/Temporary/Github/my_rust_travel/rust_pro_design/struct_9/target/debug/Struct_9: /Users/aarontian/MyWorkSpace/Temporary/Github/my_rust_travel/rust_pro_design/struct_9/src/main.rs
