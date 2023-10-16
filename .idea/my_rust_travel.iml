@@ -5,11 +5,17 @@
       <sourceFolder url="file://$MODULE_DIR$/rust_pro_design/iterator_15/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust_pro_design/struct_9/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust_pro_design/macro_21/declare_marco/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust_pro_design/macro_21/marco_derive/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/rust_pro_design/macro_21/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust_pro_design/iterator_15/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust_pro_design/struct_9/target" />
       <excludeFolder url="file://$MODULE_DIR$/test/target" />
       <excludeFolder url="file://$MODULE_DIR$/test/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust_pro_design/macro_21/declare_marco/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust_pro_design/macro_21/marco_derive/target" />
+      <excludeFolder url="file://$MODULE_DIR$/rust_pro_design/macro_21/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

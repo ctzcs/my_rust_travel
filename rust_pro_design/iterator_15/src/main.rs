@@ -6,7 +6,7 @@ fn main() {
     create(v1);
     let i = 1;
     let mut a = &i;
-    
+
 }
 ///创建迭代器
 fn create(mut v1:Vec<i32>){
@@ -16,5 +16,6 @@ fn create(mut v1:Vec<i32>){
     // create_iter::new_into_iter(&v1);
     create_iter::new_into_iter1(&mut v1);
     // create_iter::new_into_iter2(v1);
+    v1.remove(1);
 }
 
