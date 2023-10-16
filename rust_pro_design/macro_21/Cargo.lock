@@ -6,13 +6,14 @@ version = 3
 name = "macro_21"
 version = "0.1.0"
 dependencies = [
- "marco_derive",
+ "macro_derive",
 ]
 
 [[package]]
-name = "marco_derive"
+name = "macro_derive"
 version = "0.1.0"
 dependencies = [
+ "proc-macro2",
  "quote",
  "syn",
 ]

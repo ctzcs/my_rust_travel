@@ -6,4 +6,4 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-marco_derive = {path = "marco_derive"} #引入本地依赖包
+macro_derive = {path = "macro_derive" } #引入本地依赖包
