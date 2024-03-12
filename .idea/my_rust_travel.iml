@@ -4,8 +4,23 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/design_pattern/behavioral/observer/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust_pro_design/trait_11/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RustLang/RustByExample/hello_world/hello_world/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/Struct_9/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/iterator_15/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/macro_21/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/trait_11/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RustLang/test/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/design_pattern/behavioral/observer/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust_pro_design/trait_11/target" />
+      <excludeFolder url="file://$MODULE_DIR$/Bevy/my_bevy_game/target" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/RustByExample/hello_world/hello_world/target" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/design_pattern/behavioral/observer/target/debug/build" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/design_pattern/behavioral/observer/target/debug/examples" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/Struct_9/target" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/iterator_15/target" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/macro_21/target" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/trait_11/target" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/test/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
