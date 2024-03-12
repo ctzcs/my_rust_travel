@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "cargo",
+            "name": "Struct_9",
+            "cargoArgs": ["run"],
+        },
+        
+    ]
+}

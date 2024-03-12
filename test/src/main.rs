@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::fmt::Display;
 
 fn main() {
@@ -5,7 +6,6 @@ fn main() {
     a.to_string_my();
     a.show();
     let b = re(&1,&2);
-
     println!("Hello, world!{}",b);
 }
 //生命周期

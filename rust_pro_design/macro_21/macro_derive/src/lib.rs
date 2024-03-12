@@ -1,7 +1,7 @@
 use proc_macro::TokenStream;
 use quote::quote;
 
-//自定义derive宏
+//自定义derive宏——过程宏
 #[proc_macro_derive(HelloMacro)]
 pub fn hello_macro_derive(input:TokenStream) -> TokenStream{
     //将输入的词条流通过syn构建a syntax tree

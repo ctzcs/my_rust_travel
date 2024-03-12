@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "cargo",
+            "name": "macro_21",
+            "cargoArgs": ["run"],
+        },
+        
+    ]
+}

@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "cargo",
+            "name": "trait_11",
+            "cargoArgs": ["run"],
+        },
+        
+    ]
+}

@@ -4,9 +4,6 @@ mod create_iter;
 fn main() {
     let v1 = vec![1,2,3];
     create(v1);
-    let i = 1;
-    let mut a = &i;
-
 }
 ///创建迭代器
 fn create(mut v1:Vec<i32>){

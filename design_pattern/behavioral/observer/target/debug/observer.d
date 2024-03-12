@@ -1,0 +1,1 @@
+E:\Github\my_rust_travel\design_pattern\behavioral\observer\target\debug\observer.exe: E:\Github\my_rust_travel\design_pattern\behavioral\observer\src\main.rs E:\Github\my_rust_travel\design_pattern\behavioral\observer\src\observer.rs

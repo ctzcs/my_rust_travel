@@ -9,6 +9,7 @@ fn main() {
     }
     Pancakes::hello_macro();
 }
+
 #[derive(HelloMacro)]
 struct Pancakes;
 
