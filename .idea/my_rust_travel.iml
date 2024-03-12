@@ -4,6 +4,7 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/design_pattern/behavioral/observer/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/rust_pro_design/trait_11/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Bevy/my_bevy_game/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RustLang/RustByExample/hello_world/hello_world/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/Struct_9/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/iterator_15/src" isTestSource="false" />
