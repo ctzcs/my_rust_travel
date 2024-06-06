@@ -28,8 +28,8 @@ impl Plugin for Test1Plugin {
     }
 }
 
-//1. Entity
-//struct Entity(u64);
+//1. entity
+//struct entity(u64);
 #[derive(Component,Reflect)]
 struct Person;
 #[derive(Component,Reflect)]
@@ -87,7 +87,7 @@ fn player_level_up(
 fn debug_levelups(mut event_level_up: EventReader<LevelUpEvent>) {
     //接受事件
     for ev in event_level_up.read() {
-        eprintln!("Entity {:?} leveled up!", ev.0);
+        eprintln!("entity {:?} leveled up!", ev.0);
     }
 }
 

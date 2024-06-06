@@ -11,23 +11,42 @@
   <component name="CargoProjects">
     <cargoProject FILE="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/Cargo.toml" />
-    <cargoProject FILE="$PROJECT_DIR$/RustLang/rust_pro_design/Struct_9/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/RustLang/test/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/RustLang/RustByExample/hello_world/hello_world/Cargo.toml" />
     <cargoProject FILE="$PROJECT_DIR$/Bevy/my_bevy_game/Cargo.toml" />
+    <cargoProject FILE="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" />
+    <cargoProject FILE="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/SDL2.dll" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/SDL2.lib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/player1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/game/setting.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/my_rust_travel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/my_rust_travel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Bevy/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/Struct_9/.fleet/run.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bevy/my_bevy_game/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Bevy/my_bevy_game/Cargo.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bevy/my_bevy_game/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Bevy/my_bevy_game/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Bevy/my_bevy_game/src/test/test1_mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Bevy/my_bevy_game/src/test/test1_mod.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/Struct_9/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/Struct_9/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/.fleet/run.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/.fleet/run.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/.fleet/run.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/.fingerprint/trait_11-4839108d22a43300/bin-trait_11" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/.fingerprint/trait_11-4839108d22a43300/bin-trait_11" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/.fingerprint/trait_11-4839108d22a43300/bin-trait_11.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/.fingerprint/trait_11-4839108d22a43300/bin-trait_11.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/.fingerprint/trait_11-4839108d22a43300/output-bin-trait_11" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/deps/trait_11.d" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/deps/trait_11.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/trait_11.d" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/trait_11.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/trait_11.exe" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/trait_11.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/trait_11.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/debug/trait_11.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -48,24 +67,38 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/JetBrains/RustRover2024.1/intellij-rust/stdlib-local-copy/1.76.0-8bd0eecb5001c083629d6b347736742c3d229ac1/library/std/src/collections/hash/map.rs" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="v8fg0zd7" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2btk2bRnCGoGdWZqZXS6JZKofmT" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Cargo.Run TetraGame [TetraGame].executor": "Run",
     "Cargo.Run hello_world [hello_world].executor": "Run",
     "Cargo.Run my_bevy_game [my_bevy_game].executor": "Run",
     "Cargo.Run observer.executor": "Run",
+    "Cargo.Run tetra_game [tetra_game].executor": "Run",
     "Cargo.Run trait_11.executor": "Run",
     "Cargo.observer.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
@@ -77,7 +110,7 @@
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "E:/Github/my_rust_travel/Bevy/my_bevy_game/Cargo.toml",
+    "last_opened_file_path": "C:/Users/Administrator/rustlings",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,11 +118,19 @@
     "nodejs_package_manager_path": "npm",
     "org.rust.cargo.project.model.PROJECT_DISCOVERY": "true",
     "org.rust.cargo.project.model.impl.CargoExternalSystemProjectAware.subscribe.first.balloon": "",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="Cargo.Run my_bevy_game [my_bevy_game]">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Github\my_rust_travel\Tetra\tetra_game\resources" />
+    </key>
+  </component>
+  <component name="RsExternalLinterProjectSettings">
+    <option name="runOnTheFly" value="true" />
+  </component>
+  <component name="RunManager" selected="Cargo.Run tetra_game [tetra_game]">
     <configuration name="Run hello_world [hello_world]" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package hello_world --bin hello_world" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$/RustLang/RustByExample/hello_world/hello_world" />
@@ -124,9 +165,9 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Run observer" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
-      <option name="command" value="run --package observer --bin observer" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$/design_pattern/behavioral/observer" />
+    <configuration name="Run tetra_game [tetra_game]" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
+      <option name="command" value="run --package tetra_game --bin tetra_game" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$/Tetra/tetra_game" />
       <envs />
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
@@ -143,7 +184,7 @@
     </configuration>
     <configuration name="Run trait_11" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package trait_11 --bin trait_11" />
-      <option name="workingDirectory" value="file://$PROJECT_DIR$/rust_pro_design/trait_11" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$/RustLang/rust_pro_design/trait_11" />
       <envs />
       <option name="emulateTerminal" value="true" />
       <option name="channel" value="DEFAULT" />
@@ -194,10 +235,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Cargo.Run my_bevy_game [my_bevy_game]" />
-        <item itemvalue="Cargo.Run hello_world [hello_world]" />
-        <item itemvalue="Cargo.Run hello_world [hello_world]" />
-        <item itemvalue="Cargo.Run hello_world [hello_world]" />
+        <item itemvalue="Cargo.Run tetra_game [tetra_game]" />
       </list>
     </recent_temporary>
   </component>
@@ -216,14 +254,41 @@
       <workItem from="1707387629454" duration="12000" />
       <workItem from="1707823054289" duration="121000" />
       <workItem from="1708227423497" duration="104000" />
-      <workItem from="1710250430595" duration="4509000" />
+      <workItem from="1710250430595" duration="6752000" />
+      <workItem from="1710861948588" duration="1091000" />
+      <workItem from="1711465188941" duration="7349000" />
+      <workItem from="1711530631022" duration="1429000" />
+      <workItem from="1713326673355" duration="126000" />
+      <workItem from="1714882934771" duration="29000" />
+      <workItem from="1714989691947" duration="16000" />
+      <workItem from="1714989824955" duration="5000" />
+      <workItem from="1715007107666" duration="826000" />
+      <workItem from="1715753188583" duration="354000" />
+      <workItem from="1716523694054" duration="2456000" />
+      <workItem from="1716534882643" duration="954000" />
+      <workItem from="1717228141679" duration="17000" />
+      <workItem from="1717308839247" duration="489000" />
+      <workItem from="1717685122314" duration="9280000" />
+      <workItem from="1717695276310" duration="742000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/Bevy/my_bevy_game" />
     </ignored-roots>

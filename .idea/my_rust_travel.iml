@@ -11,6 +11,8 @@
       <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/macro_21/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/trait_11/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/RustLang/test/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tetra/tetra_game/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/RustLang/design_pattern/behavioral/observer/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/design_pattern/behavioral/observer/target" />
       <excludeFolder url="file://$MODULE_DIR$/rust_pro_design/trait_11/target" />
       <excludeFolder url="file://$MODULE_DIR$/Bevy/my_bevy_game/target" />
@@ -22,6 +24,8 @@
       <excludeFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/macro_21/target" />
       <excludeFolder url="file://$MODULE_DIR$/RustLang/rust_pro_design/trait_11/target" />
       <excludeFolder url="file://$MODULE_DIR$/RustLang/test/target" />
+      <excludeFolder url="file://$MODULE_DIR$/Tetra/tetra_game/target" />
+      <excludeFolder url="file://$MODULE_DIR$/RustLang/design_pattern/behavioral/observer/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
