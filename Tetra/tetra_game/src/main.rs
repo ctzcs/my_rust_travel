@@ -14,13 +14,15 @@ fn main() -> tetra::Result{
     let window_width;
     let window_height;
     {
-        let game_setting = setting::GAME_SETTING.lock().unwrap();
+        let mut game_setting = setting::GAME_SETTING.lock().unwrap();
+        game_setting.window_width = 1280.0;
+        game_setting.window_height = 720.0;
         window_width = game_setting.window_width as i32;
         window_height = game_setting.window_height as i32;
     }
 
     //建立上下文
-    ContextBuilder::new("Hello, world!", window_width,window_height)
+    ContextBuilder::new("Tetra Stress Test", window_width,window_height)
         .quit_on_escape(true)
         .build()?
         .run(game_state)

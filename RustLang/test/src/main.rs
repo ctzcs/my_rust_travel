@@ -35,7 +35,8 @@ impl<T> Show for A<T>
     }
 }
 
-impl<T> MyTrait for T where T:Show
+impl<T> MyTrait for T 
+    where T:Show
 {
     fn to_string_my(&self) {
         println!("第二个实现");
