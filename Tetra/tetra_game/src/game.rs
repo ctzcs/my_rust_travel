@@ -1,19 +1,20 @@
 pub mod setting;
 
 use tetra::{Context, Event, graphics, input, State, TetraError};
-use tetra::graphics::{Camera, Color, Texture};
+use tetra::graphics::{Camera, Color, Texture, TextureFormat};
 use tetra::graphics::scaling::{ScalingMode, ScreenScaler};
 use tetra::graphics::text::Font;
 use tetra::input::Key;
 use tetra::math::Vec2;
-use tetra::time::get_fps;
+use tetra::time::{get_fps, set_timestep, Timestep};
 use rand::distributions::{Distribution};
 use rand_distr::StandardNormal;
 use crate::entity::EntityBase;
 use crate::game::setting::{GAME_SETTING};
+use crate::res;
 
 
-const PANEL_COUNT:i32 = 500000;
+const PANEL_COUNT:i32 = 100000;
 const CAMERA_MOVE_SPEED:f32 = 10.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
 ///游戏的状态
@@ -27,25 +28,28 @@ pub struct GameState{
 impl GameState{
     //开始游戏
     pub fn new(ctx:&mut Context)-> tetra::Result<GameState>{
-
         let line_count = PANEL_COUNT/100;
         let game_setting = GAME_SETTING.lock().unwrap();
         let window_width = game_setting.window_width;
         let window_height = game_setting.window_height;
-        let player1_texture = Texture::new(ctx,"./resources/player1.png")?;
-        let player1_position = Vec2::new(16.0,( window_width - player1_texture.height() as f32)/2.0);
-        let player2_position = Vec2::new(window_width - player1_texture.width() as f32 - 16.0,(window_height - player1_texture.height() as f32)/2.0);
+        //资源加载,将其打包到可执行文件中
+        let texture_data:&[u8] = res::images::PANEL;
+        //解码
+        let panel_texture = Texture::from_encoded(ctx, texture_data)?;
+        //let player1_texture = Texture::new(ctx,"./resources/player1.png")?;
+        let player1_position = Vec2::new(16.0,( window_width - panel_texture.height() as f32)/2.0);
+        let player2_position = Vec2::new(window_width - panel_texture.width() as f32 - 16.0, (window_height - panel_texture.height() as f32)/2.0);
         let paddle_speed = 8.0;
         let mut many_entity = Vec::<EntityBase>::new();
         for i in 0.. PANEL_COUNT {
-            let position = Vec2::new( (i%line_count) as f32*10.0,(i / line_count) as f32 * player1_texture.height() as f32);
-            let _ = &mut many_entity.push(EntityBase::new(player1_texture.clone(), position, paddle_speed),);
+            let position = Vec2::new( (i%line_count) as f32*10.0,(i / line_count) as f32 * panel_texture.height() as f32);
+            let _ = &mut many_entity.push(EntityBase::new(panel_texture.clone(), position, paddle_speed),);
         }
         Ok(GameState{
             scaler:ScreenScaler::with_window_size(ctx,window_width as i32,window_height as i32,ScalingMode::ShowAllPixelPerfect)?,
             camera:Camera::new(window_width,window_height),
-            player1: EntityBase::new(player1_texture.clone(), player1_position, paddle_speed),
-            player2: EntityBase::new(player1_texture.clone(), player2_position, paddle_speed),
+            player1: EntityBase::new(panel_texture.clone(), player1_position, paddle_speed),
+            player2: EntityBase::new(panel_texture.clone(), player2_position, paddle_speed),
             entity_vec:many_entity,
         })
     }
@@ -125,8 +129,10 @@ impl State for GameState {
         graphics::reset_canvas(ctx);
         graphics::clear(ctx,Color::BLACK);
         self.scaler.draw(ctx);
-        let font = Font::vector(ctx,"resources/fonts/fusion_zh.ttf",16.0);
-        let mut text = graphics::text::Text::new(format!("{:.1}",get_fps(ctx)) ,font.unwrap());
+        let font_data :&[u8] = res::fonts::FONT_FUSION; 
+        //let FONT = Font::vector(ctx,"resources/fonts/fusion_zh.ttf",16.0)?;
+        let font = Font::from_vector_file_data(ctx,font_data,16.0)?;
+        let mut text = graphics::text::Text::new(format!("{:.1}",get_fps(ctx)) ,font);
         text.draw(ctx,Vec2{x:10.0,y:10.0});
         Ok(())
     }

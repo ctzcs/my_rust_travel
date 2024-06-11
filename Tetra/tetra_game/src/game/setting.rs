@@ -23,8 +23,6 @@ lazy_static!{
     pub static ref TIME_SETTING:Mutex<TimeSetting> = Mutex::new(TimeSetting::new());
 }
 
-
-
 pub struct TimeSetting{
     pub elapsed_time:f32,
     pub delta_time:f32,
