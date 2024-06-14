@@ -1,5 +1,6 @@
 pub mod setting;
 
+use std::rc::Rc;
 use tetra::{Context, Event, graphics, input, State, TetraError};
 use tetra::graphics::{Camera, Color, Texture, TextureFormat};
 use tetra::graphics::scaling::{ScalingMode, ScreenScaler};
@@ -9,12 +10,14 @@ use tetra::math::Vec2;
 use tetra::time::{get_fps, set_timestep, Timestep};
 use rand::distributions::{Distribution};
 use rand_distr::StandardNormal;
-use crate::entity::EntityBase;
+use crate::entity::{hero,EntityBase};
+use crate::entity::hero::Hero;
+use crate::entity_component::position::VelPos;
 use crate::game::setting::{GAME_SETTING};
 use crate::res;
 
 
-const PANEL_COUNT:i32 = 100000;
+const PANEL_COUNT:i32 = 5000;
 const CAMERA_MOVE_SPEED:f32 = 10.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
 ///游戏的状态
@@ -23,6 +26,7 @@ pub struct GameState{
     pub scaler: ScreenScaler,
     pub player1: EntityBase,
     pub player2: EntityBase,
+    pub hero:Hero,
     pub entity_vec:Vec<EntityBase>
 }
 impl GameState{
@@ -36,21 +40,23 @@ impl GameState{
         let texture_data:&[u8] = res::images::PANEL;
         //解码
         let panel_texture = Texture::from_encoded(ctx, texture_data)?;
+        let texture = Rc::new(panel_texture);
         //let player1_texture = Texture::new(ctx,"./resources/player1.png")?;
-        let player1_position = Vec2::new(16.0,( window_width - panel_texture.height() as f32)/2.0);
-        let player2_position = Vec2::new(window_width - panel_texture.width() as f32 - 16.0, (window_height - panel_texture.height() as f32)/2.0);
+        let player1_position = Vec2::new(16.0,( window_width - texture.height() as f32)/2.0);
+        let player2_position = Vec2::new(window_width - texture.width() as f32 - 16.0, (window_height - texture.height() as f32)/2.0);
         let paddle_speed = 8.0;
         let mut many_entity = Vec::<EntityBase>::new();
         for i in 0.. PANEL_COUNT {
-            let position = Vec2::new( (i%line_count) as f32*10.0,(i / line_count) as f32 * panel_texture.height() as f32);
-            let _ = &mut many_entity.push(EntityBase::new(panel_texture.clone(), position, paddle_speed),);
+            let position = Vec2::new( (i%line_count) as f32*10.0,(i / line_count) as f32 * texture.height() as f32);
+            let _ = &mut many_entity.push(EntityBase::new(Rc::clone(&texture), position, paddle_speed),);
         }
         Ok(GameState{
             scaler:ScreenScaler::with_window_size(ctx,window_width as i32,window_height as i32,ScalingMode::ShowAllPixelPerfect)?,
             camera:Camera::new(window_width,window_height),
-            player1: EntityBase::new(panel_texture.clone(), player1_position, paddle_speed),
-            player2: EntityBase::new(panel_texture.clone(), player2_position, paddle_speed),
+            player1: EntityBase::new(Rc::clone(&texture), player1_position, paddle_speed),
+            player2: EntityBase::new(Rc::clone(&texture), player2_position, paddle_speed),
             entity_vec:many_entity,
+            hero:Hero::None,
         })
     }
 }
@@ -98,6 +104,17 @@ impl State for GameState {
             let random_value:f32 = normal_dist.sample(&mut rng);
             item.position += random_value;
         }
+
+        match &mut self.hero {
+            Hero::None=>{
+                let oldMan = hero::OldMan::new("老混蛋".to_string(),VelPos::new(Vec2::new(0.0,0.0),Vec2::new(0.0,0.0)));
+                self.hero = Hero::OldMan(oldMan);
+            },
+            Hero::OldMan(oldMan)=>{
+                oldMan.update();
+            },
+        }
+
 
 
 

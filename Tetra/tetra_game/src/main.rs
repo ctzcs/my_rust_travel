@@ -1,6 +1,7 @@
 mod entity;
 mod game;
 mod res;
+mod entity_component;
 
 use tetra::{ ContextBuilder};
 use crate::game::{GameState, setting};

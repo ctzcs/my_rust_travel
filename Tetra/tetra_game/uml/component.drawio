@@ -1,0 +1,39 @@
+<mxfile host="app.diagrams.net" modified="2024-06-14T08:07:38.368Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36" etag="5iVHQEK5EAAOev6GAd2u" version="24.5.4" type="device">
+  <diagram name="第 1 页" id="x4XJlWLAafJPPVFXekEF">
+    <mxGraphModel dx="367" dy="357" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="XduaWIGmoRBekJGTaQn8-1" value="" style="fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="220" y="390" width="140" height="161" as="geometry" />
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-2" value="VelPos" style="html=1;align=left;spacingLeft=4;verticalAlign=top;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-1">
+          <mxGeometry width="140" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-3" value="" style="shape=module;jettyWidth=10;jettyHeight=4;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-2">
+          <mxGeometry x="1" width="16" height="20" relative="1" as="geometry">
+            <mxPoint x="-25" y="9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-4" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-1">
+          <mxGeometry y="40" width="140" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-5" value="provided interfaces" style="html=1;align=center;spacingLeft=4;verticalAlign=top;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-1">
+          <mxGeometry y="48" width="140" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-6" value="Interface1" style="html=1;align=left;spacingLeft=4;verticalAlign=top;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-1">
+          <mxGeometry y="73" width="140" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-7" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-1">
+          <mxGeometry y="98" width="140" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-8" value="required interfaces" style="html=1;align=center;spacingLeft=4;verticalAlign=top;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-1">
+          <mxGeometry y="106" width="140" height="25" as="geometry" />
+        </mxCell>
+        <mxCell id="XduaWIGmoRBekJGTaQn8-9" value="Interface2" style="html=1;align=left;spacingLeft=4;verticalAlign=top;strokeColor=none;fillColor=none;whiteSpace=wrap;" vertex="1" parent="XduaWIGmoRBekJGTaQn8-1">
+          <mxGeometry y="131" width="140" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
