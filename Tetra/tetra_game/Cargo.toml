@@ -16,3 +16,10 @@ rand_distr = "0.4.3"
 [profile.dev.package."*"]
 opt-level = 3
 
+
+[source.crates-io]
+replace-with = 'mirror'
+
+[source.mirror]
+registry = "https://rsproxy.cn/"
+

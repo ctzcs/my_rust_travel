@@ -17,7 +17,7 @@ use crate::game::setting::{GAME_SETTING};
 use crate::res;
 
 
-const PANEL_COUNT:i32 = 5000;
+const PANEL_COUNT:i32 = 500000;
 const CAMERA_MOVE_SPEED:f32 = 10.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
 ///游戏的状态
@@ -107,7 +107,7 @@ impl State for GameState {
 
         match &mut self.hero {
             Hero::None=>{
-                let oldMan = hero::OldMan::new("老混蛋".to_string(),VelPos::new(Vec2::new(0.0,0.0),Vec2::new(0.0,0.0)));
+                let oldMan = hero::OldMan::new("oldMan".to_string(),VelPos::new(Vec2::new(0.0,0.0),Vec2::new(0.0,0.0)));
                 self.hero = Hero::OldMan(oldMan);
             },
             Hero::OldMan(oldMan)=>{
