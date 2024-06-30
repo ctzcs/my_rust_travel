@@ -4,6 +4,7 @@ use lazy_static::lazy_static;
 use tetra::graphics::Texture;
 
 pub const PANEL:&[u8] = include_bytes!("../../resources/player1.png");
+pub const MOUSE:&[u8] = include_bytes!("../../resources/mouse.png");
 
 
 
