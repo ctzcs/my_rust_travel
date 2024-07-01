@@ -2,12 +2,12 @@
 pub mod setting;
 use std::rc::Rc;
 use tetra::{Context, Event, graphics, input, State, TetraError};
-use tetra::graphics::{Camera, Color, Texture, TextureFormat};
+use tetra::graphics::{Camera, Color, Texture};
 use tetra::graphics::scaling::{ScalingMode, ScreenScaler};
 use tetra::graphics::text::Font;
 use tetra::input::Key;
 use tetra::math::Vec2;
-use tetra::time::{get_fps, set_timestep, Timestep};
+use tetra::time::{get_fps};
 use rand::distributions::{Distribution};
 use rand_distr::StandardNormal;
 use crate::entity::{hero,EntityBase};
@@ -17,9 +17,12 @@ use crate::game::setting::{GAME_SETTING};
 use crate::res;
 
 
-const PANEL_COUNT:i32 = 10000;
-const CAMERA_MOVE_SPEED:f32 = 10.0;
+const PANEL_COUNT:i32 = 150000;
+const CAMERA_MOVE_SPEED:f32 = 30.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
+const DISTANCE_LIMIT:f32 = 500.0;
+const PANEL_SPEED:f32= 2.0;
+
 ///游戏的状态
 pub struct GameState{
     pub camera:Camera,
@@ -49,7 +52,7 @@ impl GameState{
         //let player1_texture = Texture::new(ctx,"./resources/player1.png")?;
         let player1_position = Vec2::new(16.0,( window_width - texture.height() as f32)/2.0);
         let player2_position = Vec2::new(window_width - texture.width() as f32 - 16.0, (window_height - texture.height() as f32)/2.0);
-        let paddle_speed = 8.0;
+        let paddle_speed = PANEL_SPEED;
         let mut many_entity = Vec::<EntityBase>::new();
         for i in 0.. PANEL_COUNT {
             let position = Vec2::new( (i%line_count) as f32*10.0,(i / line_count) as f32 * texture.height() as f32);
@@ -73,17 +76,20 @@ impl State for GameState {
 
         //用于游戏更新
         if input::is_key_down(ctx, Key::W) {
-            self.player1.position.y -= self.player1.speed;
-            for entity in self.entity_vec.iter_mut() {
-                entity.position.y -= entity.speed;
-            }
+            // self.player1.position.y -= self.player1.speed;
+            // for entity in self.entity_vec.iter_mut() {
+            //     entity.position.y -= entity.speed;
+            // }
+            self.camera.position.y -= CAMERA_MOVE_SPEED;
         }
 
         if input::is_key_down(ctx, Key::S) {
-            self.player1.position.y += self.player1.speed;
-            for entity in self.entity_vec.iter_mut() {
-                entity.position.y += entity.speed;
-            }
+            // self.player1.position.y += self.player1.speed;
+            // for entity in self.entity_vec.iter_mut() {
+            //     entity.position.y += entity.speed;
+            // }
+
+            self.camera.position.y += CAMERA_MOVE_SPEED;
         }
 
         if input::is_key_down(ctx,Key::A) {
@@ -106,24 +112,32 @@ impl State for GameState {
 
         let mut rng = rand::thread_rng();
         let normal_dist = StandardNormal;
-        let mouse_pos = input::get_mouse_position(ctx);
-        let distance_limit = 20.0;
+        let mouse_pos =  self.camera.mouse_position(ctx);// input::get_mouse_position(ctx);
+        
         for item in self.entity_vec.iter_mut() {
             let random_value:f32 = normal_dist.sample(&mut rng);
 
             //if()
             let distance = mouse_pos.distance(item.position);
-            if distance < distance_limit {
-                item.position += random_value  * distance_limit;
+            let mut dir =  (item.position - mouse_pos).normalized();
+            if distance < DISTANCE_LIMIT {
+                if !item.is_still_in { 
+                    //item.temp_pos = item.position;
+                }
+                else { item.set_still_in(true); }
+                
+                item.position += dir  * DISTANCE_LIMIT;
+                
             }else {
-                item.position += random_value;
+                item.set_still_in(false);
+                item.return_to_pos();
             }
 
         }
 
         match &mut self.hero {
             Hero::None=>{
-                let old_man = hero::OldMan::new("oldMan".to_string(),VelPos::new(Vec2::new(0.0,0.0),Vec2::new(0.0,0.0)));
+                let old_man = hero::OldMan::new("hero:old_man".to_string(),VelPos::new(Vec2::new(0.0,0.0),Vec2::new(0.0,0.0)));
                 self.hero = Hero::OldMan(old_man);
             },
             Hero::OldMan(oldMan)=>{
@@ -155,7 +169,7 @@ impl State for GameState {
         self.player2.texture.draw(ctx,self.player2.position);
         for i in self.entity_vec.iter() {
             //绘制的时候得投影到相机坐标系下
-            i.texture.draw(ctx,self.camera.project(i.position));
+            i.texture.draw(ctx,i.position);
         }
         //鼠标的位置也是相机坐标系下
         self.mouse_texture.draw(ctx,self.camera.mouse_position(ctx));
