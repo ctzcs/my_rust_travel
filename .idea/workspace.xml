@@ -20,15 +20,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/circle_anim.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/white_man.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/resources/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/position.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/position.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/view.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/view.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/res/images.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res/images.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,6 +111,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MySpace\Github\my_rust_travel\Tetra\tetra_game\resources" />
       <recent name="$PROJECT_DIR$/Tetra/tetra_game/resources" />
       <recent name="E:\Github\my_rust_travel\Tetra\tetra_game\resources\fonts" />
       <recent name="E:\Github\my_rust_travel\Tetra\tetra_game\resources" />
@@ -273,6 +279,11 @@
       <workItem from="1719802039611" duration="2377000" />
       <workItem from="1719804466338" duration="2621000" />
       <workItem from="1719809857268" duration="740000" />
+      <workItem from="1720180629702" duration="2469000" />
+      <workItem from="1720784145648" duration="4384000" />
+      <workItem from="1720840954203" duration="2783000" />
+      <workItem from="1720845569531" duration="2343000" />
+      <workItem from="1720858323825" duration="4053000" />
     </task>
     <servers />
   </component>

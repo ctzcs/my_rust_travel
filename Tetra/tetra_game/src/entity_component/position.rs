@@ -1,5 +1,6 @@
 use tetra::math::Vec2;
 
+///速度和位置模块
 #[derive(Debug)]
 pub struct VelPos
 {
@@ -15,6 +16,7 @@ impl VelPos {
         self.position = new_pos;
     }
 
+    ///获取速度
     pub fn get_vel(&self)->&Vec2<f32>{
         &self.velocity
     }

@@ -1,6 +1,7 @@
 
 pub mod setting;
 use std::rc::Rc;
+use std::sync::Mutex;
 use tetra::{Context, Event, graphics, input, State, TetraError};
 use tetra::graphics::{Camera, Color, Texture};
 use tetra::graphics::scaling::{ScalingMode, ScreenScaler};
@@ -11,16 +12,16 @@ use tetra::time::{get_fps};
 use rand::distributions::{Distribution};
 use rand_distr::StandardNormal;
 use crate::entity::{hero,EntityBase};
-use crate::entity::hero::Hero;
+use crate::entity::hero::{Hero, OldMan};
 use crate::entity_component::position::VelPos;
 use crate::game::setting::{GAME_SETTING};
 use crate::res;
 
 
-const PANEL_COUNT:i32 = 150000;
+const PANEL_COUNT:i32 = 100000;
 const CAMERA_MOVE_SPEED:f32 = 30.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
-const DISTANCE_LIMIT:f32 = 500.0;
+const DISTANCE_LIMIT:f32 = 50.0;
 const PANEL_SPEED:f32= 2.0;
 
 ///游戏的状态
@@ -29,7 +30,7 @@ pub struct GameState{
     pub scaler: ScreenScaler,
     pub player1: EntityBase,
     pub player2: EntityBase,
-    pub hero:Hero,
+    pub heros:Vec<Hero>,
     pub entity_vec:Vec<EntityBase>,
     pub mouse_texture:Rc<Texture>
 }
@@ -46,17 +47,21 @@ impl GameState{
         let panel_texture = Texture::from_encoded(ctx, texture_data)?;
         let texture = Rc::new(panel_texture);
 
+        //这里只加载了一份Texture到内存中，如果每次都用这个创建，就会每次都new，如果新的东西需要使用这个贴图，只需要clone()就好
         let mouse_texture = Rc::new(Texture::from_encoded(ctx,res::images::MOUSE)?);
-
+        let oldMan_texture = Texture::from_encoded(ctx,res::images::CIRCLE_ANIM).unwrap();
 
         //let player1_texture = Texture::new(ctx,"./resources/player1.png")?;
         let player1_position = Vec2::new(16.0,( window_width - texture.height() as f32)/2.0);
         let player2_position = Vec2::new(window_width - texture.width() as f32 - 16.0, (window_height - texture.height() as f32)/2.0);
         let paddle_speed = PANEL_SPEED;
         let mut many_entity = Vec::<EntityBase>::new();
+        let mut many_hero = Vec::<Hero>::new();
         for i in 0.. PANEL_COUNT {
-            let position = Vec2::new( (i%line_count) as f32*10.0,(i / line_count) as f32 * texture.height() as f32);
+            let position = Vec2::new( (i%line_count) as f32*20.0,(i / line_count) as f32 * texture.height() as f32);
             let _ = &mut many_entity.push(EntityBase::new(Rc::clone(&texture), position, paddle_speed),);
+            //通过克隆就不需要进行texture解码
+            let _ = &mut many_hero.push(Hero::OldMan(OldMan::new("Old_man".to_string(),oldMan_texture.clone(), VelPos::new(position, Vec2::new(0.0, 0.0)))));
         }
         Ok(GameState{
             scaler:ScreenScaler::with_window_size(ctx,window_width as i32,window_height as i32,ScalingMode::ShowAllPixelPerfect)?,
@@ -64,7 +69,7 @@ impl GameState{
             player1: EntityBase::new(Rc::clone(&texture), player1_position, paddle_speed),
             player2: EntityBase::new(Rc::clone(&texture), player2_position, paddle_speed),
             entity_vec:many_entity,
-            hero:Hero::None,
+            heros:many_hero,
             mouse_texture:mouse_texture,
         })
     }
@@ -116,7 +121,7 @@ impl State for GameState {
         
         for item in self.entity_vec.iter_mut() {
             let random_value:f32 = normal_dist.sample(&mut rng);
-
+        
             //if()
             let distance = mouse_pos.distance(item.position);
             let mut dir =  (item.position - mouse_pos).normalized();
@@ -132,18 +137,21 @@ impl State for GameState {
                 item.set_still_in(false);
                 item.return_to_pos();
             }
-
+        
         }
 
-        match &mut self.hero {
-            Hero::None=>{
-                let old_man = hero::OldMan::new("hero:old_man".to_string(),VelPos::new(Vec2::new(0.0,0.0),Vec2::new(0.0,0.0)));
-                self.hero = Hero::OldMan(old_man);
-            },
-            Hero::OldMan(oldMan)=>{
-                oldMan.update();
-            },
+        for hero in &mut self.heros {
+            match hero {
+                Hero::None=>{
+                    // let old_man = hero::OldMan::new("hero:old_man".to_string(),VelPos::new(Vec2::new(0.0,0.0),Vec2::new(0.0,0.0)));
+                    // self.hero = Hero::OldMan(old_man);
+                },
+                Hero::OldMan(oldMan)=>{
+                    oldMan.update();
+                },
+            }
         }
+        
 
 
 
@@ -167,13 +175,22 @@ impl State for GameState {
         // 如果你想改变其他参数，比如旋转、颜色或比例，你可以使用 DrawParams::new 来构造你自己的 DrawParams
         self.player1.texture.draw(ctx,self.player1.position);
         self.player2.texture.draw(ctx,self.player2.position);
+        
         for i in self.entity_vec.iter() {
             //绘制的时候得投影到相机坐标系下
             i.texture.draw(ctx,i.position);
         }
+        
+        
         //鼠标的位置也是相机坐标系下
         self.mouse_texture.draw(ctx,self.camera.mouse_position(ctx));
-
+        for hero in &mut self.heros {
+            match hero {
+                Hero::OldMan(OldMan)=>{OldMan.draw(ctx)},
+                Hero::None=>{},
+            } 
+        }
+        
 
 
         //重置矩阵，绘制固定的东西
