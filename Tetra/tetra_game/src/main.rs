@@ -1,8 +1,11 @@
 mod entity;
 mod game;
 mod res;
-mod entity_component;
+mod components;
+mod ui;
 
+use std::error::Error;
+use egui_tetra2::StateWrapper;
 use tetra::{ ContextBuilder};
 use crate::game::{GameState, setting};
 
@@ -11,9 +14,9 @@ use crate::game::{GameState, setting};
 //通过ContextBuilder构建游戏
 
 //State用来存储游戏状态，公开了游戏循环期间调用的各种方法
-fn main() -> tetra::Result{
+fn main() -> Result<(), Box<dyn Error>>{
     //这里是传过来一格初始化GameState的函数
-    let game_state = GameState::new;
+    
     let window_width;
     let window_height;
     {
@@ -26,10 +29,10 @@ fn main() -> tetra::Result{
 
     //建立上下文
     ContextBuilder::new("Tetra Stress Test", window_width,window_height)
+        .show_mouse(true)
         .quit_on_escape(true)
         .build()?
-        .run(game_state)
-
+        .run(|ctx| Ok(StateWrapper::<Box<dyn Error>>::new(GameState::new(ctx)?)))
 }
 
 

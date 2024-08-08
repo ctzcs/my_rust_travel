@@ -5,7 +5,7 @@ use tetra::{Context, graphics};
 use tetra::graphics::animation::Animation;
 use tetra::graphics::{animation, Color, DrawParams, Rectangle, Texture};
 use tetra::math::Vec2;
-use crate::entity_component::{position::VelPos,view::AnimView};
+use crate::components::{position::VelPos, view::AnimView};
 use crate::res;
 
 pub enum Hero{

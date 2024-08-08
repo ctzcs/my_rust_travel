@@ -20,20 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/circle_anim.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/white_man.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/ui.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/resources/image.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/position.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/position.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/view.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/view.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/components.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/position.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/components/position.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity_component/view.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/components/view.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/res/images.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res/images.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -284,6 +281,7 @@
       <workItem from="1720840954203" duration="2783000" />
       <workItem from="1720845569531" duration="2343000" />
       <workItem from="1720858323825" duration="4053000" />
+      <workItem from="1723054185066" duration="10927000" />
     </task>
     <servers />
   </component>
@@ -306,5 +304,16 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/Bevy/my_bevy_game" />
     </ignored-roots>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/Tetra/tetra_game/src/main.rs</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
