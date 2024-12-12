@@ -35,3 +35,30 @@ impl EntityBase {
         }
     }
 }
+//组件
+trait Component{
+    fn update(&mut self);
+}
+//实体
+struct Entity {
+    name:String,
+    components:Vec<Box<dyn Component>>,
+}
+
+impl Entity {
+    fn new(name:String)->Self{
+        Self{
+            name,
+            components:Vec::new(),
+        }
+    }
+    fn add_component(&mut self, component:Box<dyn Component>){
+        self.components.push(component);
+    }
+    
+    fn update(&mut self){
+        for component in &mut self.components{
+            component.update();
+        }
+    }
+}

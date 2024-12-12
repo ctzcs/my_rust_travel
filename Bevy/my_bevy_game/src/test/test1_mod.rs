@@ -24,7 +24,8 @@ impl Plugin for Test1Plugin {
             //注册是为了在inspector中可以显示
             .register_type::<MyPosition>()
             .register_type::<PlayerXp>()
-            .register_type::<Person>();
+            .register_type::<Person>()
+            .register_type::<Name>();
     }
 }
 
@@ -39,8 +40,6 @@ struct MyPosition {
 }
 #[derive(Component,Reflect)]
 struct PlayerXp(u32);
-
-
 
 
 //2. Systems

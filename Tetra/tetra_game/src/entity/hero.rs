@@ -1,12 +1,11 @@
-use std::rc::Rc;
-use std::sync::Mutex;
+
 use std::time::Duration;
 use tetra::{Context, graphics};
 use tetra::graphics::animation::Animation;
 use tetra::graphics::{animation, Color, DrawParams, Rectangle, Texture};
 use tetra::math::Vec2;
 use crate::components::{position::VelPos, view::AnimView};
-use crate::res;
+
 
 pub enum Hero{
     OldMan(OldMan),

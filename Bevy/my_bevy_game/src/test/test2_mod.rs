@@ -1,3 +1,4 @@
+use std::time::Duration;
 use bevy::app::{App, Startup};
 use bevy::asset::{Assets, AssetServer};
 use bevy::core::Name;
@@ -5,7 +6,7 @@ use bevy::input::*;
 use bevy::log::info;
 use bevy::math::Vec2;
 use bevy::prelude::*;
-use bevy::sprite::{SpriteBundle, SpriteSheetBundle, TextureAtlas};
+use bevy::sprite::{TextureAtlas};
 use bevy::time::{Time, TimerMode};
 
 /**
@@ -26,8 +27,8 @@ impl Plugin for Test2Plugin{
             .add_systems(Startup,(add_people,load_texture_atlas))
             //.add_systems(Startup, load_sprite)
             .add_systems(Update,(check_input,animate_sprite,camera_move))
-            .register_type::<AnimationIndices>()
-            .register_type::<AnimationTimer>();
+            .register_type::<AnimationConfig>();
+        
 
     }
 }
@@ -37,16 +38,11 @@ struct Person;
 
 fn add_people(mut commands: Commands) {
     //可视化坐标包
-    commands.spawn((Person,Name::new("Elaina Proctor"),SpatialBundle{
-        transform:Transform::from_scale(Vec3::splat(3.0)),
-        visibility:Visibility::Hidden,
-        ..Default::default()
-    }));
+    commands.spawn((Person,Name::new("Elaina Proctor"),
+                    Transform::from_scale(Vec3::splat(3.0)),
+                    Visibility::Hidden));
     //坐标包
-    commands.spawn((Person,Name::new("Renzo Hume"),TransformBundle{
-        local:Transform::from_scale(Vec3::splat(3.0)),
-        ..Default::default()
-    }));
+    commands.spawn((Person,Name::new("Renzo Hume"),Transform::from_scale(Vec3::splat(3.0))));
     commands.spawn((Person,Name::new("Zana Nieves")));
     info!("完成创建")
 }
@@ -86,15 +82,7 @@ fn camera_move(keys:Res<ButtonInput<KeyCode>>, mut camera_query:Query<(&mut Tran
 ///4. 加载图片
 fn load_sprite(mut commands: Commands, asset_server:Res<AssetServer>){
     let handle = asset_server.load("character_robot_sheet.png");
-    commands.spawn(SpriteBundle{
-        sprite: Default::default(),
-        transform: Default::default(),
-        global_transform: Default::default(),
-        texture: handle,
-        visibility: Default::default(),
-        inherited_visibility: Default::default(),
-        view_visibility: Default::default(),
-    });
+    commands.spawn( Sprite::from_image(handle));
 }
 
 
@@ -103,42 +91,57 @@ fn load_sprite(mut commands: Commands, asset_server:Res<AssetServer>){
 struct MyCameraMarker;
 fn setup_camera(mut commands: Commands) {
     commands.spawn((
-        Camera2dBundle {
-            transform: Transform::from_xyz(0.0, 0.0, 10.0),
-            ..default()
-        },
+        Camera2d::default(),
         MyCameraMarker,
     ));
 }
 
 ///6.动画模组
 #[derive(Component,Reflect)]
-struct AnimationIndices{
+struct AnimationConfig {
     first:usize,
     last:usize,
+    fps: u8,
+    frame_timer: Timer
 }
-#[derive(Component,Reflect, Deref, DerefMut)]
-struct AnimationTimer(Timer);
 
-fn animate_sprite(time:Res<Time>,
-mut query:Query<(&AnimationIndices,&mut AnimationTimer,&mut TextureAtlas)>){
-    for (indices,mut timer,mut sprite) in &mut query {
-        timer.tick(time.delta());
-        if timer.just_finished() {
-            sprite.index = if sprite.index == indices.last {
-                indices.first
-            }else {
-                sprite.index +1
-            };
+impl AnimationConfig {
+
+    fn new(first: usize, last: usize, fps: u8) -> Self {
+        Self {
+            first: first,
+            last: last,
+            fps,
+            frame_timer: Self::timer_from_fps(fps),
+        }
+    }
+    pub fn timer_from_fps(fps: u8) -> Timer {
+        Timer::new(Duration::from_secs_f32(1.0 / (fps as f32)), TimerMode::Once)
+    }
+}
+
+fn animate_sprite(time: Res<Time>, mut query: Query<(&mut AnimationConfig, &mut Sprite)>){
+    for (mut config,mut sprite) in &mut query {
+        config.frame_timer.tick(time.delta());
+        if config.frame_timer.just_finished() {
+            if let Some(atlas) = &mut sprite.texture_atlas{
+                if atlas.index == config.last {
+                    atlas.index = config.first;
+                }else {
+                    
+                    atlas.index = atlas.index + 1;
+                };
+                config.frame_timer = AnimationConfig::timer_from_fps(config.fps);
+            }
         }
     }
 }
 //旋转sprite
-fn rotate_sprite(time:Res<Time>,mut query: Query<&mut Transform,With<AnimationTimer>>){
-    for mut q in query.iter_mut() {
-        q.rotation *= Quat::from_rotation_z(10.0*time.delta().as_secs_f32());
-    }
-}
+// fn rotate_sprite(time:Res<Time>,mut query: Query<&mut Transform,With<AnimationTimer>>){
+//     for mut q in query.iter_mut() {
+//         q.rotation *= Quat::from_rotation_z(10.0*time.delta().as_secs_f32());
+//     }
+// }
 
 //加载图集
 fn load_texture_atlas(mut commands: Commands,
@@ -150,7 +153,7 @@ fn load_texture_atlas(mut commands: Commands,
     for c in camera_query.iter() {
         center = c.translation;
     }
-    let texture_atlas_layout = TextureAtlasLayout::from_grid(Vec2::new(96.0,128.0),9,5,None,None);
+    let texture_atlas_layout = TextureAtlasLayout::from_grid(UVec2::new(96,128),9,5,None,None);
 
     for i in 0..5000 {
         let row= &i % 100;
@@ -159,24 +162,19 @@ fn load_texture_atlas(mut commands: Commands,
         //资源的引用
         let texture = asset_server.load("character_robot_sheet.png");
         let texture_atlas_handle = texture_atlas_layouts.add(texture_atlas_layout.clone());
-        let animation_indices = AnimationIndices
-        {
-            first:i%44,
-            last:44,
-        };
+        let animation_indices = AnimationConfig::new(i%44, 44, 30);
 
         commands.spawn((
-            SpriteSheetBundle {
-                texture,
-                atlas: TextureAtlas {
+            Sprite{
+                image:texture.clone(),
+                texture_atlas:Some(TextureAtlas {
                     layout: texture_atlas_handle,
                     index: animation_indices.first,
-                },
-                transform: Transform::from_scale(Vec3::splat(0.2)).with_translation(one),
+                }),
                 ..default()
             },
+            Transform::from_scale(Vec3::splat(0.2)).with_translation(one),
             animation_indices,
-            AnimationTimer(Timer::from_seconds(0.1, TimerMode::Repeating)),
         ));
     }
 

@@ -1,5 +1,7 @@
 
 pub mod setting;
+mod mode;
+mod save;
 
 use tetra::State;
 use std::error::Error;
@@ -20,7 +22,7 @@ use crate::game::setting::{GAME_SETTING};
 use crate::res;
 
 
-const PANEL_COUNT:i32 = 1000;
+const PANEL_COUNT:i32 = 10000;
 const CAMERA_MOVE_SPEED:f32 = 30.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
 const DISTANCE_LIMIT:f32 = 50.0;
