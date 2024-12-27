@@ -6,7 +6,7 @@ mod save;
 use tetra::State;
 use std::error::Error;
 use std::rc::Rc;
-use tetra::{Context, Event, graphics, input};
+use tetra::{Context, graphics, input};
 use tetra::graphics::{Camera, Color, Texture};
 use tetra::graphics::scaling::{ScalingMode, ScreenScaler};
 use tetra::graphics::text::Font;
@@ -15,12 +15,12 @@ use tetra::math::Vec2;
 use tetra::time::{get_fps};
 use rand::distributions::{Distribution};
 use rand_distr::StandardNormal;
-use crate::entity::{hero,EntityBase};
 use crate::entity::hero::{Hero, OldMan};
 use crate::components::position::VelPos;
+use crate::entity::EntityBase;
 use crate::game::setting::{GAME_SETTING};
 use crate::res;
-
+use crate::utils::get_world_mouse_position;
 
 const PANEL_COUNT:i32 = 10000;
 const CAMERA_MOVE_SPEED:f32 = 30.0;
@@ -47,7 +47,7 @@ impl GameState{
         let window_height = game_setting.window_height;
         //资源加载,将其打包到可执行文件中
         let texture_data:&[u8] = res::images::PANEL;
-        //解码
+        //解码Texture
         let panel_texture = Texture::from_encoded(ctx, texture_data)?;
         let texture = Rc::new(panel_texture);
 
@@ -221,6 +221,7 @@ impl GameState{
 
 ///ui包装的state
 impl egui_tetra2::State<Box<dyn Error>> for GameState {
+    //UI更新
     fn ui(&mut self, ctx: &mut tetra::Context,egui_ctx: &egui::Context) -> Result<(), Box<dyn Error>> {
         egui::Window::new("ui1").show(egui_ctx,|ui|{
             ui.label("hello")
@@ -232,10 +233,10 @@ impl egui_tetra2::State<Box<dyn Error>> for GameState {
         Ok(())
     }
 
-
+    ///帧更新
     fn update(&mut self, ctx: &mut Context,egui_ctx: &egui::Context) -> Result<(), Box<dyn Error>> {
 
-        //用于游戏更新
+        //用户输入
         if input::is_key_down(ctx, Key::W) {
             // self.player1.position.y -= self.player1.speed;
             // for entity in self.entity_vec.iter_mut() {
@@ -269,12 +270,15 @@ impl egui_tetra2::State<Box<dyn Error>> for GameState {
             self.camera.scale -= crate::game::CAMERA_ZOOM_SPEED;
         }
 
+        //相机更新
         self.camera.update();
 
         let mut rng = rand::thread_rng();
         let normal_dist = StandardNormal;
-        let mouse_pos =  self.camera.mouse_position(ctx);// input::get_mouse_position(ctx);
-
+        //ViewPort坐标系中的位置
+        //let mouse_pos =  self.camera.mouse_position(ctx);// input::get_mouse_position(ctx);
+        let mouse_pos = get_world_mouse_position(&ctx,&self.camera);
+        
         for item in self.entity_vec.iter_mut() {
             let random_value:f32 = normal_dist.sample(&mut rng);
 
@@ -307,11 +311,7 @@ impl egui_tetra2::State<Box<dyn Error>> for GameState {
                 },
             }
         }
-
-
-
-
-
+        
         Ok(())
     }
 

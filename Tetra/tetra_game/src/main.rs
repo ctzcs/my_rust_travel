@@ -3,6 +3,7 @@ mod game;
 mod res;
 mod components;
 mod ui;
+mod utils;
 
 use std::error::Error;
 use egui_tetra2::StateWrapper;
