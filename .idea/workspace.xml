@@ -19,17 +19,7 @@
     <cargoProject FILE="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/utils.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" afterDir="false" />
-    </list>
+    <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,7 +107,7 @@
     <option name="runOnTheFly" value="true" />
     <option name="tool" value="Clippy" />
   </component>
-  <component name="RunManager" selected="Cargo.Run tetra_game [tetra_game]">
+  <component name="RunManager" selected="Cargo.test">
     <configuration name="Run hello_world [hello_world]" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package hello_world --bin hello_world" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$/RustLang/RustByExample/hello_world/hello_world" />
@@ -220,6 +210,33 @@
         <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
+      <option name="buildProfileId" value="dev" />
+      <option name="command" value="run" />
+      <option name="workingDirectory" value="file://$PROJECT_DIR$/RustLang/test" />
+      <envs />
+      <option name="emulateTerminal" value="true" />
+      <option name="channel" value="DEFAULT" />
+      <option name="requiredFeatures" value="true" />
+      <option name="allFeatures" value="false" />
+      <option name="withSudo" value="false" />
+      <option name="buildTarget" value="REMOTE" />
+      <option name="backtrace" value="SHORT" />
+      <option name="isRedirectInput" value="false" />
+      <option name="redirectInputPath" value="" />
+      <method v="2">
+        <option name="CARGO.BUILD_TASK_PROVIDER" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Cargo.Run" />
+      <item itemvalue="Cargo.observer" />
+      <item itemvalue="Cargo.test" />
+      <item itemvalue="Cargo.Run hello_world [hello_world]" />
+      <item itemvalue="Cargo.Run my_bevy_game [my_bevy_game]" />
+      <item itemvalue="Cargo.Run tetra_game [tetra_game]" />
+      <item itemvalue="Cargo.Run trait_11" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Cargo.Run tetra_game [tetra_game]" />
