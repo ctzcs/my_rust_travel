@@ -22,6 +22,7 @@ fn main() -> Result<(), Box<dyn Error>>{
     let window_height;
     {
         let mut game_setting = setting::GAME_SETTING.lock().unwrap();
+        
         game_setting.window_width = 1280.0;
         game_setting.window_height = 720.0;
         window_width = game_setting.window_width as i32;

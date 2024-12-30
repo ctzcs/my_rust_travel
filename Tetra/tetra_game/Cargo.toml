@@ -13,6 +13,10 @@ rand_distr = "0.4.3"
 egui = "0.28.1"
 egui-tetra2 = "0.5.1"
 
+#[dependencies.tetra]
+#version = "0.8"
+#features = ["sdl2_static_link"]
+
 #![cfg_attr(not(debug_assertions),windows_subsystem = "windows")]
 [profile.dev.package."*"]
 opt-level = 3

@@ -19,7 +19,29 @@
     <cargoProject FILE="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="" />
+    <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/sounds/bgm.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/id.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res/sounds.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RustLang/test/target/debug/test.d" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/debug/test.d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/resources/circle_anim.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/circle_anim.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/resources/mouse.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/mouse.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/components/view.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/components/view.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/res.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/res/fonts.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res/fonts.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/utils.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -73,6 +95,7 @@
     &quot;Cargo.Run tetra_game [tetra_game].executor&quot;: &quot;Run&quot;,
     &quot;Cargo.Run trait_11.executor&quot;: &quot;Run&quot;,
     &quot;Cargo.observer.executor&quot;: &quot;Run&quot;,
+    &quot;Cargo.test.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
@@ -97,6 +120,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\MySpace\Github\my_rust_travel\Tetra\tetra_game\resources\sounds" />
       <recent name="D:\MySpace\Github\my_rust_travel\Tetra\tetra_game\resources" />
       <recent name="$PROJECT_DIR$/Tetra/tetra_game/resources" />
       <recent name="E:\Github\my_rust_travel\Tetra\tetra_game\resources\fonts" />
@@ -107,7 +131,7 @@
     <option name="runOnTheFly" value="true" />
     <option name="tool" value="Clippy" />
   </component>
-  <component name="RunManager" selected="Cargo.test">
+  <component name="RunManager" selected="Cargo.Run tetra_game [tetra_game]">
     <configuration name="Run hello_world [hello_world]" type="CargoCommandRunConfiguration" factoryName="Cargo Command" temporary="true">
       <option name="command" value="run --package hello_world --bin hello_world" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$/RustLang/RustByExample/hello_world/hello_world" />
@@ -211,7 +235,6 @@
       </method>
     </configuration>
     <configuration name="test" type="CargoCommandRunConfiguration" factoryName="Cargo Command">
-      <option name="buildProfileId" value="dev" />
       <option name="command" value="run" />
       <option name="workingDirectory" value="file://$PROJECT_DIR$/RustLang/test" />
       <envs />
@@ -304,6 +327,7 @@
       <workItem from="1730227707939" duration="4805000" />
       <workItem from="1734021081129" duration="8524000" />
       <workItem from="1735130082889" duration="3446000" />
+      <workItem from="1735525843362" duration="32621000" />
     </task>
     <servers />
   </component>
