@@ -21,13 +21,17 @@ use crate::entity::hero::{Hero, SampleCha};
 use crate::components::position::VelPos;
 use crate::entity::id::IdAllocator;
 use crate::entity::IEntity;
+use crate::game::mode::EGameMode::Line;
 //use crate::entity::EntityBase;
 use crate::game::setting::{GAME_SETTING};
 use crate::res;
 use crate::res::Assets;
 use crate::utils::screen_to_world;
 
-const PANEL_COUNT:i32 = 100000;
+
+const LINE_COUNT:u32 = 50;
+const ROW_COUNT:u32 = 200;
+const SPACE:Vec2<f32> = Vec2::new(15.0,15.0);
 const CAMERA_MOVE_SPEED:f32 = 30.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
 const DISTANCE_LIMIT:f32 = 50.0;
@@ -49,7 +53,7 @@ pub struct GameState{
 impl GameState{
     //开始游戏
     pub fn new(ctx:&mut Context)-> tetra::Result<GameState>{
-        let line_count = PANEL_COUNT/100;
+        let total = LINE_COUNT * ROW_COUNT;
         let game_setting = GAME_SETTING.lock().unwrap();
         let window_width = game_setting.window_width;
         let window_height = game_setting.window_height;
@@ -81,12 +85,12 @@ impl GameState{
             id_allocator:IdAllocator::new(0,Vec::<u32>::new())
         };
 
-        for i in 0.. PANEL_COUNT {
-            let position = Vec2::new( (i%line_count) as f32*20.0,(i / line_count) as f32 * texture.height() as f32);
-            //let _ = &mut many_entity.push(EntityBase::new(Rc::clone(&texture), position, paddle_speed),);
-            //通过克隆就不需要进行texture解码
-            let hero = Hero::SampleCha(SampleCha::new(&mut state,"Old_man".to_string(),oldMan_texture.clone(), VelPos::new(position, Vec2::new(0.0, 0.0))));
-            let _ = &mut state.heros.push(hero);
+        for i in 0..LINE_COUNT {
+            for j in 0..ROW_COUNT {
+                let position = Vec2::new(i as f32 * SPACE.x,j as f32 * SPACE.y);
+                let hero = Hero::SampleCha(SampleCha::new(&mut state,"Old_man".to_string(),oldMan_texture.clone(), VelPos::new(position, Vec2::new(0.0, 0.0))));
+                let _ = &mut state.heros.push(hero);
+            }
         }
         
         Ok(state)
@@ -223,14 +227,7 @@ impl egui_tetra2::State<Box<dyn Error>> for GameState {
         // }
 
 
-        //鼠标的位置也是相机坐标系下
-        let mouse_world_position = screen_to_world(&self.camera, input::get_mouse_position(ctx));
-        let mouse_camera_position = self.camera.mouse_position(ctx);
-        self.mouse_texture.draw(ctx,mouse_camera_position);
         
-        println!("鼠标的屏幕坐标系{0}",input::get_mouse_position(ctx));
-        println!("鼠标世界坐标系位置{0}", mouse_world_position);
-        println!("鼠标相机坐标系位置{0}",mouse_camera_position);
         let heros = &mut self.heros;
         for hero in heros{
             match hero {
@@ -240,6 +237,15 @@ impl egui_tetra2::State<Box<dyn Error>> for GameState {
                 Hero::None=>{},
             }
         }
+
+        //鼠标的位置也是相机坐标系下
+        let mouse_world_position = screen_to_world(&self.camera, input::get_mouse_position(ctx));
+        let mouse_camera_position = self.camera.mouse_position(ctx);
+        self.mouse_texture.draw(ctx,mouse_camera_position);
+
+        println!("鼠标的屏幕坐标系{0}",input::get_mouse_position(ctx));
+        println!("鼠标世界坐标系位置{0}", mouse_world_position);
+        println!("鼠标相机坐标系位置{0}",mouse_camera_position);
 
 
 

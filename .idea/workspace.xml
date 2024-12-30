@@ -20,27 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="da8e038f-be2e-468e-907c-ad1331269c18" name="更改" comment="">
-      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/sounds/bgm.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/id.rs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res/sounds.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/design_pattern/behavioral/observer/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/iterator_15/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/macro_21/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/rust_pro_design/trait_11/target/.rustc_info.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/.rustc_info.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RustLang/test/target/debug/test.d" beforeDir="false" afterPath="$PROJECT_DIR$/RustLang/test/target/debug/test.d" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/resources/circle_anim.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/circle_anim.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/resources/mouse.png" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/resources/mouse.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/components/view.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/components/view.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/entity/hero.rs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/game.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/main.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/res.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/res/fonts.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/res/fonts.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tetra/tetra_game/src/utils.rs" beforeDir="false" afterPath="$PROJECT_DIR$/Tetra/tetra_game/src/utils.rs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
