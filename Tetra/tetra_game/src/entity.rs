@@ -1,7 +1,9 @@
-pub mod hero;
+pub mod character;
 pub mod id;
 pub mod manager;
+mod building;
 
+use std::any::Any;
 use tetra::Context;
 use crate::game::mode::sample_mode::{SampleMode, SampleModeModel};
 

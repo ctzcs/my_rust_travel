@@ -1,5 +1,3 @@
-use std::ops::{Deref, DerefMut};
-use crate::entity::hero::SampleCha;
 use crate::entity::IEntity;
 
 pub struct EntityManager {
@@ -15,7 +13,6 @@ impl EntityManager {
     
     pub fn add(&mut self,entity: Box<dyn IEntity>){
         self.entities.push(entity);
-        
     }
     
     pub fn remove(&mut self,entity: Box<dyn IEntity>){
@@ -28,5 +25,4 @@ impl EntityManager {
     pub fn get_all(&mut self) -> &mut Vec<Box<dyn IEntity>> {
         &mut self.entities
     }
-    
 }

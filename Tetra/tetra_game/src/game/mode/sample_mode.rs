@@ -8,7 +8,7 @@ use tetra::input::Key;
 use tetra::math::Vec2;
 use tetra::time::get_fps;
 use crate::components::position::VelPos;
-use crate::entity::hero::{SampleCha};
+use crate::entity::character::{SampleCha};
 use crate::entity::id::IdAllocator;
 use crate::entity::manager::EntityManager;
 use crate::game::mode::{IMode};
