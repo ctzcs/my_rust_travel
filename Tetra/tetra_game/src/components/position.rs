@@ -1,7 +1,7 @@
 use tetra::math::Vec2;
 
 ///速度和位置模块
-#[derive(Debug)]
+#[derive(PartialEq,Debug)]
 pub struct VelPos
 {
     position:Vec2<f32>,

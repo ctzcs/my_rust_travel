@@ -47,3 +47,12 @@ pub fn world_to_camera(camera: &Camera, world_pos:Vec2<f32>) -> Vec2<f32> {
     )
     
 }
+
+
+pub fn get_position(center: Vec2<f32>, radius: f32, time: f32, speed: f32) -> Vec2<f32> {
+    let angle = time * speed;
+    Vec2::new(
+        center.x + radius * angle.cos(),
+        center.y + radius * angle.sin()
+    )
+}

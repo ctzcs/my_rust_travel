@@ -6,7 +6,6 @@ pub struct IdAllocator {
 }
 
 impl IdAllocator {
-    
     pub fn new(next_id:u32,id_pool:Vec<u32>)->IdAllocator{
         IdAllocator{
             next_id,
