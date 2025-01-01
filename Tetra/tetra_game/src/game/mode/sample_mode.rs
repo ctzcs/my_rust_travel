@@ -11,7 +11,7 @@ use crate::components::position::VelPos;
 use crate::entity::character::{SampleCha};
 use crate::entity::id::IdAllocator;
 use crate::entity::manager::EntityManager;
-use crate::game::mode::{IMode};
+use crate::game::mode::{IMode, IModel};
 use crate::game::setting::GAME_SETTING;
 use crate::res;
 use crate::utils::screen_to_world;
@@ -28,7 +28,7 @@ const PANEL_SPEED:f32= 2.0;
 pub struct SampleMode {
     pub camera:Camera,
     pub scaler: ScreenScaler,
-    pub entity_manager: EntityManager,
+    pub entity_manager: EntityManager<SampleModeModel>,
     pub assets: Assets,
     pub model:SampleModeModel,
 }
@@ -219,3 +219,6 @@ pub struct SampleModeModel{
 pub struct Assets{
     pub mouse_texture:Rc<Texture>,
 }
+
+
+impl IModel for SampleModeModel{}

@@ -9,3 +9,7 @@ pub trait IMode {
     fn draw(&mut self, ctx: &mut Context) -> Result<(), Box<dyn Error>>;
     fn event(&mut self, ctx: &mut Context,event: tetra::Event) -> Result<(), Box<dyn Error>>;
 }
+
+pub trait IModel{
+    
+}

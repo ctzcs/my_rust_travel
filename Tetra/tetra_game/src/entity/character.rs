@@ -45,12 +45,11 @@ impl SampleCha {
     }
 }
 
-impl IEntity for SampleCha {
+impl IEntity<SampleModeModel> for SampleCha {
     fn get_id(&self) -> &u32 {
         &self.base.id
     }
-
-    fn update(&mut self, ctx: &mut Context,sample_mode_model:&mut SampleModeModel) {
+    fn update(&mut self, ctx: &mut Context, model:&mut SampleModeModel) {
         let distance = Vec2::distance(self.vel_pos.get_position().clone(),Vec2::zero());
         self.time += TIME_SETTING.lock().unwrap().fixed_delta_time;
         let pos =self.start_pos + utils::get_position(Vec2::zero(),distance/10.0,self.time,1.0);

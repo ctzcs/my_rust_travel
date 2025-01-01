@@ -5,11 +5,12 @@ mod building;
 
 use std::any::Any;
 use tetra::Context;
+use crate::game::mode::IModel;
 use crate::game::mode::sample_mode::{SampleMode, SampleModeModel};
 
-pub trait IEntity{
+pub trait IEntity<T:IModel>{
     fn get_id(&self) -> &u32;
-    fn update(&mut self,ctx:&mut Context,sample_mode_model: &mut SampleModeModel);
+    fn update(&mut self,ctx:&mut Context,sample_mode_model: &mut T);
     fn draw(&mut self,ctx:&mut Context);
     
 }
