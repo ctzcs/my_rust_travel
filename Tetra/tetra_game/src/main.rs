@@ -35,7 +35,7 @@ fn main() -> Result<(), Box<dyn Error>>{
     ContextBuilder::new("Tetra Stress Test", window_width,window_height)
         .show_mouse(true)
         .quit_on_escape(true)
-        .timestep(Timestep::Fixed(60.0))
+        .timestep(Timestep::Fixed(30.0))
         .build()?
         .run(|ctx| Ok(StateWrapper::<Box<dyn Error>>::new(GameState::new(ctx)?)))
 }

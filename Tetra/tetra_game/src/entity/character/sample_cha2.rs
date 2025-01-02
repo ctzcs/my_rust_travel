@@ -1,5 +1,7 @@
+use std::f32::consts::PI;
 use std::time::Duration;
 use egui::ImageData::Color;
+use egui::vec2;
 use rand::Rng;
 use tetra::Context;
 use tetra::graphics::animation::Animation;
@@ -50,7 +52,13 @@ impl IEntity<SampleModel> for SampleCha2 {
     fn update(&mut self, ctx: &mut Context, model:Model<SampleModel>) {
         let distance = Vec2::distance(self.vel_pos.get_position().clone(),Vec2::zero());
         self.time += TIME_SETTING.lock().unwrap().fixed_delta_time;
-        let pos =self.start_pos + utils::get_position(Vec2::zero(),distance/10.0,self.time,1.0);
+        let mut pos = self.start_pos + utils::get_position(Vec2::zero(),distance/10.0,self.time,1.0);
+        let mut rng = rand::thread_rng();
+        let value = rng.gen_range(0.0..2.0*PI);
+        let x = 10.0*value.cos();
+        let y = 10.0*value.sin();
+        pos += Vec2::new(x,y);
+
         self.vel_pos.set_position(pos);
         // self.vel_pos.set_position(
         //     self.vel_pos.get_position() + Vec2::new(0.01, 0.01));
@@ -63,13 +71,18 @@ impl IEntity<SampleModel> for SampleCha2 {
 
         //如果要让动画播放，必须先设置advance
         self.view.anim.advance(ctx);
+
+        let mut rng = rand::thread_rng();
+        let r = rng.gen_range(0.1f32..0.8);
+        let g = rng.gen_range(0.1f32..0.8);
+        let b = rng.gen_range(0.1f32..0.8);
         //绘制的位置
         //图形中心
         //图形scale
         self.view.anim.draw(ctx,DrawParams::new()
             .position(*self.vel_pos.get_position())
             .origin(Vec2::new(16.0, 16.0))
-            .scale(Vec2::new(1.0, 1.0)).color(tetra::graphics::Color::rgb(1.0,0.0,0.0)));
+            .scale(Vec2::new(1.0, 1.0)).color(tetra::graphics::Color::rgb(r,g,b)));
     }
 
 }

@@ -21,7 +21,7 @@ use crate::res;
 use crate::utils::screen_to_world;
 
 
-const LINE_COUNT:u32 = 200;
+const LINE_COUNT:u32 = 50;
 const ROW_COUNT:u32 = 100;
 const SPACE:Vec2<f32> = Vec2::new(32.0,32.0);
 const CAMERA_MOVE_SPEED:f32 = 30.0;
@@ -169,13 +169,14 @@ impl IMode for SampleMode {
         //鼠标的位置也是相机坐标系下
         let mouse_world_position = screen_to_world(&self.camera, input::get_mouse_position(ctx));
         let mouse_camera_position = self.camera.mouse_position(ctx);
-        self.assets.mouse_texture.draw(ctx,mouse_camera_position);
+        self.assets.mouse_texture.draw(ctx,
+                                       mouse_camera_position);
 
         println!("鼠标的屏幕坐标系{0}",input::get_mouse_position(ctx));
         println!("鼠标世界坐标系位置{0}", mouse_world_position);
         println!("鼠标相机坐标系位置{0}",mouse_camera_position);
 
-
+        
 
         //重置矩阵，绘制固定的东西
         graphics::reset_transform_matrix(ctx);
@@ -187,7 +188,7 @@ impl IMode for SampleMode {
         let font = Font::from_vector_file_data(ctx,font_data,16.0)?;
         let mut text = graphics::text::Text::new(format!("{:.1}",get_fps(ctx)) ,font);
         text.draw(ctx,Vec2{x:10.0,y:10.0});
-
+        
         Ok(())
     }
 
