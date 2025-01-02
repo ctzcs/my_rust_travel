@@ -1,5 +1,8 @@
+use std::cell::{Ref, RefCell};
+use std::collections::HashMap;
 use std::error::Error;
 use std::rc::Rc;
+use rand::{random, Rng, thread_rng};
 use tetra::{Context, graphics, input};
 use tetra::graphics::text::Font;
 use tetra::graphics::{Camera, Color, Texture};
@@ -8,18 +11,19 @@ use tetra::input::Key;
 use tetra::math::Vec2;
 use tetra::time::get_fps;
 use crate::components::position::VelPos;
-use crate::entity::character::{SampleCha};
+use crate::entity::character::{sample_cha::SampleCha};
+use crate::entity::character::sample_cha2::SampleCha2;
 use crate::entity::id::IdAllocator;
 use crate::entity::manager::EntityManager;
-use crate::game::mode::{IMode, IModel};
+use crate::game::mode::{IMode, IModelData, Model};
 use crate::game::setting::GAME_SETTING;
 use crate::res;
 use crate::utils::screen_to_world;
 
 
-const LINE_COUNT:u32 = 100;
+const LINE_COUNT:u32 = 200;
 const ROW_COUNT:u32 = 100;
-const SPACE:Vec2<f32> = Vec2::new(15.0,15.0);
+const SPACE:Vec2<f32> = Vec2::new(32.0,32.0);
 const CAMERA_MOVE_SPEED:f32 = 30.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
 const DISTANCE_LIMIT:f32 = 50.0;
@@ -28,9 +32,9 @@ const PANEL_SPEED:f32= 2.0;
 pub struct SampleMode {
     pub camera:Camera,
     pub scaler: ScreenScaler,
-    pub entity_manager: EntityManager<SampleModeModel>,
     pub assets: Assets,
-    pub model:SampleModeModel,
+    pub model:Model<SampleModel>,
+    
 }
 
 
@@ -43,22 +47,27 @@ impl SampleMode{
         let window_width = game_setting.window_width;
         let window_height = game_setting.window_height;
         //资源加载,将其打包到可执行文件中
-        let texture_data:&[u8] = res::images::PANEL;
         //解码Texture
         //这里只加载了一份Texture到内存中，如果每次都用这个创建，就会每次都new，如果新的东西需要使用这个贴图，只需要clone()就好
-        let mouse_texture = Rc::new(Texture::from_encoded(ctx,res::images::MOUSE)?);
+        let mouse_texture = Rc::new(Texture::from_encoded(ctx,res::textures::MOUSE)?);
         let mut mode = SampleMode{
             scaler:ScreenScaler::with_window_size(ctx,window_width as i32,window_height as i32,ScalingMode::ShowAllPixelPerfect)?,
             camera:Camera::new(window_width,window_height),
             // player1: EntityBase::new(Rc::clone(&texture), player1_position, paddle_speed),
             // player2: EntityBase::new(Rc::clone(&texture), player2_position, paddle_speed),
             // entity_vec:many_entity,
-            entity_manager: EntityManager::new(Vec::new()),
+            
             assets:Assets{mouse_texture},
-            model:SampleModeModel{id_allocator:IdAllocator::new(0,Vec::<u32>::new())},
+            model:Model::<SampleModel>{
+                data:Rc::new(RefCell::new(SampleModel{
+                    id_allocator:IdAllocator::new(0,Vec::new()),
+                    entity_manager: EntityManager::new(HashMap::new()),
+                }))
+                
+            }
         };
-
-        create_hero(ctx,&mut mode);
+        
+        create_hero(&mut mode,ctx);
 
         Ok(mode)
     }
@@ -118,13 +127,11 @@ impl IMode for SampleMode {
 
         //相机更新
         self.camera.update();
-
-        let mut rng = rand::thread_rng();
-        let heros =  self.entity_manager.get_all() ;
-        for hero in heros {
-            hero.update(ctx,&mut self.model);
-        }
-
+        let model = self.model.clone();
+        model.get_mut_data().entity_manager.update(ctx, self.model.clone());
+        //model.data.borrow_mut().entity_manager.update(ctx, self.model.clone() /*&mut *self.model.data.borrow_mut()*/);
+        //self.model.entity_manager.update(ctx, self.model.clone() /*&mut *self.model.data.borrow_mut()*/);
+        
         Ok(())
     }
 
@@ -143,29 +150,21 @@ impl IMode for SampleMode {
         //在16，16的位置绘图
         //当你传入一个 Vec2 时，它会自动转换成一个带有 position 参数集的 DrawParams 结构。
         // 如果你想改变其他参数，比如旋转、颜色或比例，你可以使用 DrawParams::new 来构造你自己的 DrawParams
-        // self.player1.texture.draw(ctx,self.player1.position);
-        // self.player2.texture.draw(ctx,self.player2.position);
-
+        
         // for i in self.entity_vec.iter() {
         //     //绘制的时候得投影到相机坐标系下
         //     i.texture.draw(ctx,i.position);
         // }
 
-
-
-
-        let heros = self.entity_manager.get_all();
-        for hero in heros {
-            hero.draw(ctx);
-        }
-        /*for hero in heros{
-            match hero {
-                Hero::SampleCha(OldMan)=>{
-                    OldMan.draw(ctx)
-                },
-                Hero::None=>{},
-            }
-        }*/
+        
+        // if let Some(heros)  = self.model.get_mut_data().entity_manager.get_entities::<SampleCha>(){
+        //     for hero in heros.iter_mut() {
+        //         hero.draw(ctx);
+        //     }
+        // }
+        
+        self.model.get_mut_data().entity_manager.draw(ctx);
+        
 
         //鼠标的位置也是相机坐标系下
         let mouse_world_position = screen_to_world(&self.camera, input::get_mouse_position(ctx));
@@ -200,25 +199,47 @@ impl IMode for SampleMode {
 
 
 
-fn create_hero(ctx:&mut Context,mode:&mut SampleMode){
-    let oldMan_texture = Texture::from_encoded(ctx,res::images::CIRCLE_ANIM).unwrap();
-    for i in 0..LINE_COUNT {
-        for j in 0..ROW_COUNT {
-            let position = Vec2::new(i as f32 * SPACE.x,j as f32 * SPACE.y);
-            let hero = SampleCha::new(mode.model.id_allocator.pop_id(),"Old_man".to_string(),oldMan_texture.clone(), VelPos::new(position, Vec2::new(0.0, 0.0)));
-            let _ = mode.entity_manager.add(Box::new(hero));
+fn create_hero(mode:&mut SampleMode,ctx:&mut Context){
+    
+    let circle_texture = Texture::from_encoded(ctx, res::textures::CIRCLE_TEXTURE).unwrap();
+    let rocket_texture = Texture::from_encoded(ctx,res::textures::ROCKET_TEXTURE).unwrap();
+    // let mut tex = Vec::<Texture>::new();
+    // tex.push(circle_texture);
+    // tex.push(rocket_texture);
+    
+    let textures = [circle_texture,rocket_texture];
+    let mut random = rand::thread_rng();
+    
+    //每次都应该画所有同样的东西
+    for i in 0.. ROW_COUNT{
+        for j in 0..LINE_COUNT {
+            let index= random.gen_range(0..2);
+            let position = Vec2::new(j as f32 * SPACE.x,i as f32 * SPACE.y);
+            let hero = SampleCha::new(mode.model.data.borrow_mut().id_allocator.pop_id(), "Old_man".to_string(),textures[0].clone(), VelPos::new(position, Vec2::new(0.0, 0.0)));
+            let _ = mode.model.get_mut_data().entity_manager.add::<SampleCha>(Box::new(hero));
         }
     }
-}
 
 
-pub struct SampleModeModel{
-    pub id_allocator:IdAllocator
+    for i in 0..ROW_COUNT {
+        for j in 0..LINE_COUNT {
+            let index= random.gen_range(0..2);
+            let position =  Vec2::new((j) as f32 * SPACE.x,(i+ROW_COUNT) as f32 * SPACE.y);
+            let hero = SampleCha2::new(mode.model.data.borrow_mut().id_allocator.pop_id(), "Man2".to_string(), textures[1].clone(), VelPos::new(position, Vec2::new(0.0, 0.0)));
+            let _ = mode.model.get_mut_data().entity_manager.add::<SampleCha2>(Box::new(hero));
+        }
+    }
 }
 
 pub struct Assets{
     pub mouse_texture:Rc<Texture>,
 }
 
+pub struct SampleModel{
+    pub id_allocator:IdAllocator,
+    pub entity_manager: EntityManager<SampleModel>
+}
 
-impl IModel for SampleModeModel{}
+impl IModelData for SampleModel {
+    
+}

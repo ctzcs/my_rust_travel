@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub struct IdAllocator {
     next_id: u32,
     id_pool:Vec<u32>,

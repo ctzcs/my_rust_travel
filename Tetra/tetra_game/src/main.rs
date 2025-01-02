@@ -4,6 +4,7 @@ mod res;
 mod components;
 mod ui;
 mod utils;
+mod command;
 
 use std::error::Error;
 use egui_tetra2::StateWrapper;

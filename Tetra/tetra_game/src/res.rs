@@ -1,6 +1,6 @@
 
 pub mod fonts;
-pub mod images;
+pub mod textures;
 mod sounds;
 
 use tetra::audio::Sound;

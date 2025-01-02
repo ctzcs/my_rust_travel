@@ -1,29 +1,72 @@
+use std::any::{Any, TypeId};
+use std::collections::HashMap;
+use tetra::Context;
 use crate::entity::IEntity;
-use crate::game::mode::IModel;
+use crate::game::mode::{IModelData, Model};
 
-pub struct EntityManager<T:IModel> {
-    entities:Vec<Box<dyn IEntity<T>>>
+pub struct EntityManager<T>
+where T:IModelData,
+      //T:Clone
+{
+    entities:HashMap<TypeId,Vec<Box<dyn IEntity<T>>>>,
+    
 }
 
-impl<T:IModel> EntityManager<T>{
-    pub fn new(heroes:Vec<Box<dyn IEntity<T>>>) -> EntityManager<T> {
+impl<T> EntityManager<T>
+where T:IModelData, 
+    //T:Clone
+      
+{
+    pub fn new(entities:HashMap<TypeId,Vec<Box<dyn IEntity<T>>>>) -> EntityManager<T> {
         EntityManager {
-            entities: heroes
+            entities
         }
     }
     
-    pub fn add(&mut self,entity: Box<dyn IEntity<T>>){
-        self.entities.push(entity);
-    }
-    
-    pub fn remove(&mut self,entity: Box<dyn IEntity<T>>){
+    pub fn add<TEntity>(&mut self, entity: Box<dyn IEntity<T>>)
+        where TEntity : IEntity<T>,
+              TEntity: 'static
+    {
+        self.entities.entry(TypeId::of::<TEntity>())
+            .or_default().push(entity);
         
-        if let Some(index) = self.entities.iter().position(|item| item.get_id() == entity.get_id()){
-            self.entities.remove(index);
-        }
     }
     
-    pub fn get_all(&mut self) -> &mut Vec<Box<dyn IEntity<T>>> {
+    pub fn remove<TEntity>(&mut self,entity: Box<dyn IEntity<T>>)
+        where TEntity:IEntity<T>,
+            TEntity:'static
+    {
+        let id = entity.get_id();
+        self.entities.get_mut(&TypeId::of::<TEntity>()).unwrap()
+            .retain(|item| item.get_id() != id);
+    }
+
+    pub fn get_entities<TEntity>(&mut self) -> Option<&mut Vec<Box<dyn IEntity<T>>>>
+        where TEntity : IEntity<T>,
+              TEntity: 'static
+    {
+        self.entities.get_mut(&TypeId::of::<TEntity>())
+    }
+    
+    
+    pub fn get_all(&mut self) -> &mut HashMap<TypeId,Vec<Box<dyn IEntity<T>>>> {
         &mut self.entities
+    }
+    
+    pub fn update(&mut self,ctx:&mut Context,model:Model<T>){
+        for (_,value) in self.entities.iter_mut() {
+            for entity in value {
+                entity.update(ctx,model.clone());
+            }
+        }
+    }
+
+
+    pub fn draw(&mut self,ctx:&mut Context){
+        for (_,value) in self.entities.iter_mut() {
+            for entity in value {
+                entity.draw(ctx);
+            }
+        }
     }
 }

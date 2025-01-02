@@ -10,3 +10,7 @@ impl View {
         View { anim, }
     }
 }
+
+
+//动画绘图
+//1. 
