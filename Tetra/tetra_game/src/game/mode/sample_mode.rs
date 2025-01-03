@@ -1,5 +1,6 @@
 use std::cell::{Ref, RefCell};
 use std::collections::HashMap;
+use std::env;
 use std::error::Error;
 use std::rc::Rc;
 use rand::{random, Rng, thread_rng};
@@ -18,12 +19,13 @@ use crate::entity::manager::EntityManager;
 use crate::game::mode::{IMode, IModelData, Model};
 use crate::game::setting::GAME_SETTING;
 use crate::res;
+use crate::res::anims::get_anim;
 use crate::utils::screen_to_world;
 
 
-const LINE_COUNT:u32 = 50;
+const LINE_COUNT:u32 = 100;
 const ROW_COUNT:u32 = 100;
-const SPACE:Vec2<f32> = Vec2::new(32.0,32.0);
+const SPACE:Vec2<f32> = Vec2::new(10.0,10.0);
 const CAMERA_MOVE_SPEED:f32 = 30.0;
 const CAMERA_ZOOM_SPEED:f32 = 0.1;
 const DISTANCE_LIMIT:f32 = 50.0;
@@ -68,7 +70,12 @@ impl SampleMode{
         };
         
         create_hero(&mut mode,ctx);
-
+        
+        let anim = get_anim();
+        if let Ok(a) = anim{
+            println!("{:?}",a);
+        }
+        
         Ok(mode)
     }
     
@@ -172,11 +179,12 @@ impl IMode for SampleMode {
         self.assets.mouse_texture.draw(ctx,
                                        mouse_camera_position);
 
+        /*
         println!("鼠标的屏幕坐标系{0}",input::get_mouse_position(ctx));
         println!("鼠标世界坐标系位置{0}", mouse_world_position);
         println!("鼠标相机坐标系位置{0}",mouse_camera_position);
-
-        
+        */
+         
 
         //重置矩阵，绘制固定的东西
         graphics::reset_transform_matrix(ctx);
@@ -202,13 +210,13 @@ impl IMode for SampleMode {
 
 fn create_hero(mode:&mut SampleMode,ctx:&mut Context){
     
-    let circle_texture = Texture::from_encoded(ctx, res::textures::CIRCLE_TEXTURE).unwrap();
-    let rocket_texture = Texture::from_encoded(ctx,res::textures::ROCKET_TEXTURE).unwrap();
+    // let circle_texture = Texture::from_encoded(ctx, res::textures::CIRCLE_TEXTURE).unwrap();
+    //let rocket_texture = Texture::from_encoded(ctx,res::textures::ROCKET_TEXTURE).unwrap();
     // let mut tex = Vec::<Texture>::new();
     // tex.push(circle_texture);
     // tex.push(rocket_texture);
-    
-    let textures = [circle_texture,rocket_texture];
+    //let textures = [circle_texture,rocket_texture];
+    let pack = Texture::from_encoded(ctx,res::textures::PACK_TEXTURE).unwrap();
     let mut random = rand::thread_rng();
     
     //每次都应该画所有同样的东西
@@ -216,7 +224,10 @@ fn create_hero(mode:&mut SampleMode,ctx:&mut Context){
         for j in 0..LINE_COUNT {
             let index= random.gen_range(0..2);
             let position = Vec2::new(j as f32 * SPACE.x,i as f32 * SPACE.y);
-            let hero = SampleCha::new(mode.model.data.borrow_mut().id_allocator.pop_id(), "Old_man".to_string(),textures[0].clone(), VelPos::new(position, Vec2::new(0.0, 0.0)));
+            let hero = SampleCha::new(
+                mode.model.data.borrow_mut().id_allocator.pop_id(),
+                "Old_man".to_string(),pack.clone(),
+                VelPos::new(position, Vec2::new(0.0, 0.0)));
             let _ = mode.model.get_mut_data().entity_manager.add::<SampleCha>(Box::new(hero));
         }
     }
@@ -226,7 +237,10 @@ fn create_hero(mode:&mut SampleMode,ctx:&mut Context){
         for j in 0..LINE_COUNT {
             let index= random.gen_range(0..2);
             let position =  Vec2::new((j) as f32 * SPACE.x,(i+ROW_COUNT) as f32 * SPACE.y);
-            let hero = SampleCha2::new(mode.model.data.borrow_mut().id_allocator.pop_id(), "Man2".to_string(), textures[1].clone(), VelPos::new(position, Vec2::new(0.0, 0.0)));
+            let hero = SampleCha2::new(
+                mode.model.data.borrow_mut().id_allocator.pop_id(), 
+                "Man2".to_string(), pack.clone(), 
+                VelPos::new(position, Vec2::new(0.0, 0.0)));
             let _ = mode.model.get_mut_data().entity_manager.add::<SampleCha2>(Box::new(hero));
         }
     }

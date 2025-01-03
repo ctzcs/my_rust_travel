@@ -5,8 +5,9 @@ use tetra::graphics::Texture;
 
 pub const MOUSE:&[u8] = include_bytes!("../../resources/textures/mouse.png");
 pub const CIRCLE_TEXTURE:&[u8] = include_bytes!("../../resources/textures/circle_anim.png");
-pub const ROCKET_TEXTURE:&[u8]=include_bytes!("../../resources/textures/rocket.png");
+pub const ROCKET_TEXTURE:&[u8] = include_bytes!("../../resources/textures/rocket.png");
 
+pub const PACK_TEXTURE:&[u8] = include_bytes!("../../resources/textures/pack.png");
 pub struct ResSystem{
     assets:HashMap<i32,Texture>,
 }

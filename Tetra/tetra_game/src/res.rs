@@ -2,6 +2,7 @@
 pub mod fonts;
 pub mod textures;
 mod sounds;
+pub mod anims;
 
 use tetra::audio::Sound;
 use tetra::graphics::text::{Font, Text, VectorFontBuilder};

@@ -32,7 +32,7 @@ impl SampleCha {
             view: View::new(
                 Animation::new(
                     texture,
-                    Rectangle::row(0.0, 0.0, 32.0, 32.0).take(10).collect(),//动画矩形
+                    Rectangle::row(1.0, 32.0, 32.0, 21.0).take(10).collect(),//动画矩形
                     Duration::from_secs_f64(0.1f64))),//动画持续时间
             start_pos,
             time:0.0

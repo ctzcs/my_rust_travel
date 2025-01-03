@@ -35,7 +35,7 @@ impl SampleCha2 {
             view: View::new(
                 Animation::new(
                     texture,
-                    Rectangle::row(0.0, 0.0, 32.0, 32.0).take(10).collect(),//动画矩形
+                    Rectangle::row(1.0, 1.0, 32.0, 29.0).take(10).collect(),//动画矩形
                     Duration::from_secs_f64(0.1f64))),//动画持续时间
             start_pos,
             time:0.0
@@ -68,10 +68,9 @@ impl IEntity<SampleModel> for SampleCha2 {
 
     fn draw(&mut self, ctx: &mut Context) {
         //画出当前状态
-
         //如果要让动画播放，必须先设置advance
         self.view.anim.advance(ctx);
-
+        
         let mut rng = rand::thread_rng();
         let r = rng.gen_range(0.1f32..0.8);
         let g = rng.gen_range(0.1f32..0.8);
